@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:sqlite_add_table/9_unit_testing_page.dart';
+import '1_open_database_page.dart';
+import '2_open_asset_database_page.dart';
+import '3_sql_basics_page.dart';
+import '4_delete_database_page.dart';
+import '5_build_runtime_issues_page.dart';
+import '6_usage_recommendations_page.dart';
+import '7_dev_tips_page.dart';
+import '8_sqlite_version_page.dart';
+import '9_development_guide_page.dart';
 
 void main() {
   runApp(const SQLiteGuideApp());
@@ -16,6 +26,18 @@ class SQLiteGuideApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       home: const SQLiteGuidePage(),
+      routes: {
+        '/open-database': (context) => const OpenDatabasePage(),
+        '/open-asset-database': (context) => const OpenAssetDatabasePage(),
+        '/sql-basics': (context) => const SqlBasicsPage(),
+        '/delete-database': (context) => const DeleteDatabasePage(),
+        '/build-runtime-issues': (context) => const BuildRuntimeIssuesPage(),
+        '/usage-recommendations': (context) => const UsageRecommendationsPage(),
+        '/dev-tips': (context) => const DevTipsPage(),
+        '/sqlite-version': (context) => const SQLiteVersionPage(),
+        '/development-guide': (context) => const DevelopmentGuidePage(),
+        '/unit-testing': (context) => const UnitTestingPage(),
+      },
     );
   }
 }
@@ -92,18 +114,6 @@ class SQLiteGuidePage extends StatelessWidget {
             '/unit-testing',
             'SQLiteを使用したアプリケーションのテスト方法',
           ),
-          _buildGuideItem(
-            context,
-            '外部ドキュメント',
-            '/external-docs',
-            '外部リソースとチュートリアル',
-          ),
-          _buildGuideItem(
-            context,
-            'WindowsとLinuxのサポート',
-            '/platform-support',
-            'クロスプラットフォーム対応について',
-          ),
         ],
       ),
     );
@@ -125,8 +135,7 @@ class SQLiteGuidePage extends StatelessWidget {
         subtitle: Text(description),
         trailing: const Icon(Icons.arrow_forward_ios),
         onTap: () {
-          // TODO: 各ページへのナビゲーションを実装
-          // Navigator.pushNamed(context, route);
+          Navigator.pushNamed(context, route);
         },
       ),
     );
